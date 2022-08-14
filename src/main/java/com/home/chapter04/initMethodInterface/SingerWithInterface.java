@@ -1,10 +1,12 @@
-package initMethod;
+package com.home.chapter04.initMethodInterface;
 
+import com.home.chapter04.initMethod.Singer;
 import org.springframework.beans.factory.BeanCreationException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class Singer {
+public class SingerWithInterface implements InitializingBean {
     public static final String DEFAULT_NAME = "Eric Clapton";
 
     private  String name;
@@ -18,7 +20,8 @@ public class Singer {
         this.age = age;
     }
 
-    public void init() {
+    @Override
+    public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing bean");
 
         if (name == null) {
@@ -28,7 +31,7 @@ public class Singer {
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
                     "You must set the age property of any beans of type"
-                    + Singer.class);
+                            + Singer.class);
         }
     }
 
@@ -42,7 +45,7 @@ public class Singer {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("classpath:init-method-context.xml");
+        context.load("classpath:init-method-with-interface-context.xml");
         context.refresh();
 
         getBean("singerOne", context);
@@ -52,10 +55,10 @@ public class Singer {
         context.close();
     }
 
-    public static Singer getBean(String beanName, ApplicationContext context) {
+    public static SingerWithInterface getBean(String beanName, ApplicationContext context) {
 
         try {
-            Singer bean = (Singer) context.getBean(beanName);
+            SingerWithInterface bean = (SingerWithInterface) context.getBean(beanName);
             System.out.println(bean);
             return bean;
         } catch (BeanCreationException e) {

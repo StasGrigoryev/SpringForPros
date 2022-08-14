@@ -1,12 +1,10 @@
-package com.home.start.initMethodConfigClass;
+package com.home.chapter04.initMethodConfigClass;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.GenericApplicationContext;
-
-import static com.home.start.initMethodConfigClass.Singer.getBean;
 
 public class SingerConfigDemo {
 
@@ -40,9 +38,9 @@ public class SingerConfigDemo {
 
     public static void main(String[] args) {
         GenericApplicationContext context = new AnnotationConfigApplicationContext(SingerConfig.class);
-        getBean("singerOne", context);
-        getBean("singerTwo", context);
-        getBean("singerThree", context);
+        Singer.getBean("singerOne", context);
+        Singer.getBean("singerTwo", context);
+        Singer.getBean("singerThree", context);
 
         context.close();
 

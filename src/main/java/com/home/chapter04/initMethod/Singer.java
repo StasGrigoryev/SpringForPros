@@ -1,7 +1,8 @@
-package com.home.start.initMethodConfigClass;
+package com.home.chapter04.initMethod;
 
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Singer {
     public static final String DEFAULT_NAME = "Eric Clapton";
@@ -39,6 +40,17 @@ public class Singer {
                 '}';
     }
 
+    public static void main(String[] args) {
+        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
+        context.load("classpath:init-method-context.xml");
+        context.refresh();
+
+        getBean("singerOne", context);
+        getBean("singerTwo", context);
+        getBean("singerThree", context);
+
+        context.close();
+    }
 
     public static Singer getBean(String beanName, ApplicationContext context) {
 

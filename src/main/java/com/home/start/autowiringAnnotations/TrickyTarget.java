@@ -47,7 +47,7 @@ public class TrickyTarget {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("spring/autowiring_annotated.xml");
+        context.load("spring/start/autowiring_annotated.xml");
         context.refresh();
 
         TrickyTarget target = context.getBean(TrickyTarget.class); // byType?

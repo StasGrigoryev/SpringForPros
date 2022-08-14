@@ -1,4 +1,4 @@
-package com.home.start.destroyMethodInterface;
+package com.home.chapter04.destroyMethodInterface;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

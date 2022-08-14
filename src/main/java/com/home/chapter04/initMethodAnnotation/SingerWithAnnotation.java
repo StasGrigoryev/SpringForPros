@@ -1,11 +1,12 @@
-package initMethodInterface;
+package com.home.chapter04.initMethodAnnotation;
 
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class SingerWithInterface implements InitializingBean {
+import javax.annotation.PostConstruct;
+
+public class SingerWithAnnotation {
     public static final String DEFAULT_NAME = "Eric Clapton";
 
     private  String name;
@@ -19,8 +20,8 @@ public class SingerWithInterface implements InitializingBean {
         this.age = age;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    @PostConstruct
+    public void init() {
         System.out.println("Initializing bean");
 
         if (name == null) {
@@ -30,7 +31,7 @@ public class SingerWithInterface implements InitializingBean {
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
                     "You must set the age property of any beans of type"
-                            + initMethod.Singer.class);
+                    + SingerWithAnnotation.class);
         }
     }
 
@@ -44,7 +45,7 @@ public class SingerWithInterface implements InitializingBean {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("classpath:init-method-with-interface-context.xml");
+        context.load("classpath:init-method-with-annotation-context.xml");
         context.refresh();
 
         getBean("singerOne", context);
@@ -54,10 +55,10 @@ public class SingerWithInterface implements InitializingBean {
         context.close();
     }
 
-    public static SingerWithInterface getBean(String beanName, ApplicationContext context) {
+    public static SingerWithAnnotation getBean(String beanName, ApplicationContext context) {
 
         try {
-            SingerWithInterface bean = (SingerWithInterface) context.getBean(beanName);
+            SingerWithAnnotation bean = (SingerWithAnnotation) context.getBean(beanName);
             System.out.println(bean);
             return bean;
         } catch (BeanCreationException e) {

@@ -1,23 +1,21 @@
-package com.home.start.destroyMethodWithJSR250;
+package com.home.chapter04.destroyMethod;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.io.File;
 
-public class DestructiveBeanWithJSR250 {
+public class DestructiveBean implements InitializingBean {
 
     private File file;
     private String filePath;
 
-    @PostConstruct
+    @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing Bean");
 
         if (filePath == null) {
-            throw new IllegalArgumentException("You must specify the filePath property of " + DestructiveBeanWithJSR250.class);
+            throw new IllegalArgumentException("You must specify the filePath property of " + DestructiveBean.class);
         }
 
         this.file = new File(filePath);
@@ -25,8 +23,7 @@ public class DestructiveBeanWithJSR250 {
         System.out.println("File exists: " + file.exists());
     }
 
-    @PreDestroy
-    public void destroy() throws Exception {
+    public void destroy() {
         System.out.println("Destroying bean");
 
         if (!file.delete()) {
@@ -42,12 +39,13 @@ public class DestructiveBeanWithJSR250 {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("classpath:spring/destroy-method-with-jsr250.xml");
+        context.load("classpath:spring/destroy-method-context.xml");
         context.refresh();
 
-        DestructiveBeanWithJSR250 bean = (DestructiveBeanWithJSR250) context.getBean("destructiveBean");
+        DestructiveBean bean = (DestructiveBean) context.getBean("destructiveBean");
         System.out.println("Calling destroy()");
         context.destroy();
         System.out.println("Called destroy()");
     }
 }
+

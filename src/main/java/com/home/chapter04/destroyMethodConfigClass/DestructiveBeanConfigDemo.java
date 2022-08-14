@@ -1,6 +1,6 @@
-package com.home.start.destroyMethodConfigClass;
+package com.home.chapter04.destroyMethodConfigClass;
 
-import com.home.start.destroyMethodWithJSR250.DestructiveBeanWithJSR250;
+import com.home.chapter04.destroyMethodWithJSR250.DestructiveBeanWithJSR250;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -6,14 +6,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
-    	http://www.springframework.org/schema/beans/spring-beans.xsd
-    	http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd"
+    	http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true" >
 
-    <context:annotation-config/>
-
-    <bean id="destructiveBean" class="com.home.start.destroyMethodWithJSR250.DestructiveBeanWithJSR250"
+    <bean id="destructiveBean" class="com.home.chapter04.destroyMethod.DestructiveBean"
+          destroy-method="destroy"
           p:filePath= "#{ systemProperties['java.io.tmpdir' ]}#{ systemProperties['file.separator'] }test.txt"/>
-
 </beans>

@@ -1,12 +1,9 @@
-package initMethodAnnotation;
+package com.home.chapter04.initMethodConfigClass;
 
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
-import javax.annotation.PostConstruct;
-
-public class SingerWithAnnotation {
+public class Singer {
     public static final String DEFAULT_NAME = "Eric Clapton";
 
     private  String name;
@@ -20,7 +17,6 @@ public class SingerWithAnnotation {
         this.age = age;
     }
 
-    @PostConstruct
     public void init() {
         System.out.println("Initializing bean");
 
@@ -31,7 +27,7 @@ public class SingerWithAnnotation {
         if (age == Integer.MIN_VALUE) {
             throw new IllegalArgumentException(
                     "You must set the age property of any beans of type"
-                    + SingerWithAnnotation.class);
+                    + Singer.class);
         }
     }
 
@@ -43,22 +39,11 @@ public class SingerWithAnnotation {
                 '}';
     }
 
-    public static void main(String[] args) {
-        GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("classpath:init-method-with-annotation-context.xml");
-        context.refresh();
 
-        getBean("singerOne", context);
-        getBean("singerTwo", context);
-        getBean("singerThree", context);
-
-        context.close();
-    }
-
-    public static SingerWithAnnotation getBean(String beanName, ApplicationContext context) {
+    public static Singer getBean(String beanName, ApplicationContext context) {
 
         try {
-            SingerWithAnnotation bean = (SingerWithAnnotation) context.getBean(beanName);
+            Singer bean = (Singer) context.getBean(beanName);
             System.out.println(bean);
             return bean;
         } catch (BeanCreationException e) {
