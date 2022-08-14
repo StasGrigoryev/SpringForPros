@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="fooOne"
+          class="com.home.chapters01_03.autowiringInterface.FooImplOne"
+          primary="true"/>
+    <bean id="fooTwo"
+          class="com.home.chapters01_03.autowiringInterface.FooImplTwo"/>
+    <bean id="fooThree"
+          class="com.home.chapters01_03.autowiringInterface.FooImplThree"/>
+    <bean id="barOne"
+          class="com.home.chapters01_03.autowiringInterface.BarImplOne"
+          primary="true"/>
+    <bean id="barTwo"
+          class="com.home.chapters01_03.autowiringInterface.BarImplTwo"/>
+
+    <bean id="targetByType" autowire="byType"
+          class="com.home.chapters01_03.autowiringInterface.CTarget"
+          lazy-init="true"/>
+</beans>
