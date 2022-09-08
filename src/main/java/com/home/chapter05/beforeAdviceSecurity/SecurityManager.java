@@ -1,4 +1,4 @@
-package com.home.chapter05.securityBeforeAdvice;
+package com.home.chapter05.beforeAdviceSecurity;
 
 public class SecurityManager {
     private static ThreadLocal<UserInfo> threadLocal = new ThreadLocal<>();

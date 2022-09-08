@@ -1,4 +1,4 @@
-package com.home.chapter05.securityBeforeAdvice;
+package com.home.chapter05.beforeAdviceSecurity;
 
 import org.springframework.aop.framework.ProxyFactory;
 
