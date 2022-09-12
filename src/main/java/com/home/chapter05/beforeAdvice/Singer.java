@@ -1,5 +1,5 @@
 package com.home.chapter05.beforeAdvice;
 
-interface Singer {
+public interface Singer {
     void sing();
 }
