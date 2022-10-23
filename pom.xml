@@ -17,6 +17,7 @@
     <modules>
         <module>bootSimple</module>
         <module>bootWeb</module>
+        <module>chapter05</module>
     </modules>
 
     <dependencies>
@@ -94,14 +95,15 @@
             <artifactId>aspectjrt</artifactId>
             <version>1.5.3</version>
         </dependency>
-
-
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-
-        </dependencies>
-    </dependencyManagement>
+<!--    <build>-->
+<!--        <finalName>SpringForPros</finalName>-->
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--            </resource>-->
+<!--        </resources>-->
+<!--    </build>-->
 
 </project>
