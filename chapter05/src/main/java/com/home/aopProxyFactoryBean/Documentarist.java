@@ -2,7 +2,7 @@ package com.home.aopProxyFactoryBean;
 
 public class Documentarist {
 
-    private GrammyGuitarist guitarist;
+    public GrammyGuitarist guitarist;
 
     public void execute() {
         guitarist.sing();
