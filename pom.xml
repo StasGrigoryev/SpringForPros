@@ -18,6 +18,7 @@
         <module>bootSimple</module>
         <module>bootWeb</module>
         <module>chapter05</module>
+        <module>aspectj</module>
     </modules>
 
     <dependencies>

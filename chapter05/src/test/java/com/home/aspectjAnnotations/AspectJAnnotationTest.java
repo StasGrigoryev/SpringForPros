@@ -1,5 +1,7 @@
-package com.home.aspectjAnnotations;
+package java.com.home.aspectjAnnotations;
 
+import com.home.aspectjAnnotations.AppConfig;
+import com.home.aspectjAnnotations.NewDocumentarist;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
